@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Student Attendance System</title>
+   <style>
+    /* General Styling */
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        {% comment %} background: linear-gradient(135deg, #007bff, #00d4ff); {% endcomment %}
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: #fff;
+    }
+    
+    /* Sign-Up Container */
+    .signup-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+    
+    /* Sign-Up Card */
+    .signup-card {
+        background-color: #fff;
+        color: #333;
+        border-radius: 10px;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+        padding: 40px;
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+    }
+    
+    .signup-logo {
+        width: 80px;
+        margin-bottom: 20px;
+    }
+    
+    h2 {
+        color: #333;
+        margin-bottom: 20px;
+    }
+    
+    /* Form Elements */
+    form input[type="text"], form input[type="email"], form input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        outline: none;
+        box-sizing: border-box;
+    }
+    
+    .signup-button {
+        width: 100%;
+        padding: 12px;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .signup-button:hover {
+        background-color: #0056b3;
+    }
+    
+    /* Footer */
+    .signup-footer {
+        margin-top: 15px;
+        font-size: 0.9em;
+        color: #666;
+    }
+    
+    .signup-footer a {
+        color: #007bff;
+        text-decoration: none;
+    }
+    
+    .signup-footer a:hover {
+        text-decoration: underline;
+    }
+    
+   </style>
+</head>
+<body>
+  {% include "nav.html" %}
+    <div class="signup-container">
+        <div class="signup-card">
+            <img src="{% static 'images/download.jpeg' %}" alt="Institute Logo" class="signup-logo">
+            <h2>Create an Account</h2>
+            <form method="POST" action="{% url 'login' %}">
+                <input type="text" name="full_name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+                <button type="submit" class="signup-button">Sign Up</button>
+            </form>
+            <p class="signup-footer">Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+        </div>
+    </div>
+</body>
+</html>

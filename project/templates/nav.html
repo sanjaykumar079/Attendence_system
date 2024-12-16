@@ -1,0 +1,75 @@
+{% load static %}
+<style>
+  /* Navigation Bar */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+  .navbar {
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 30px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+  }
+  .navbar .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #283c86;
+      display: flex;
+      align-items: center;
+  }
+  .navbar .logo img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+  }
+  .navbar .nav-buttons {
+      display: flex;
+      gap: 15px;
+  }
+  .navbar .button, .navbar .login-button {
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: white;
+      border-radius: 6px;
+      transition: transform 0.3s, background-color 0.3s;
+  }
+  .navbar .button {
+      background: #283c86;
+  }
+  .navbar .button:hover {
+      background-color: #45a247;
+  }
+  .navbar .login-button {
+      background: #45a247;
+      padding: 10px 25px;
+  }
+  .navbar .login-button:hover {
+      background-color: #283c86;
+  }
+</style>
+
+<div class="navbar">
+  <div class="logo">
+    <img src="{% static 'images/download.jpeg' %}" alt="Logo">
+    NRI Institute of Technology
+  </div>
+  <div class="nav-buttons">
+    <a href="{% url "home" %}" class="button">Home</a>
+    <a href="{% url "attendance_upload" %}" class="button">Upload Attendance</a>
+    <a href= "{% url "view_attendance" %}" class="button">View Attendance</a>
+    <a href="#reports" class="button">Reports</a>
+    <a href="{% url "login" %}" class="login-button">Login</a>
+  </div>
+</div>

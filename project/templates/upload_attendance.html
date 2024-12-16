@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>upload attendance</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            /* margin: 0 100px; */
+            flex-direction:row;
+            min-height: 100vh;
+            background: #f4f7fc;
+            color: #333;
+        }
+ 
+        /* Form Container */
+        .container {
+            margin-right: 190px;
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            margin-top:30px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #555;
+            font-size: 0.9em;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f9f9f9;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus, select:focus {
+            outline: none;
+            border-color: #007bff;
+            background: #fff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+        }
+        .back-button {
+            background-color: #555;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+            margin-top: 10px;
+            margin-top: 500px;
+            margin-bottom: 17px;
+            display: inline-block;
+        }
+        .back-button:hover {
+            background-color: #444;
+        }
+
+        /* Button Styles */
+        .button {
+            padding: 16px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            margin-top: 0px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            width: 48%;
+        }
+
+        .button.upload {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .button.upload:hover {
+            background-color: #0056b3;
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+        }
+
+        .button.reset {
+            background-color: #6c757d;
+            color: #fff;
+        }
+
+        .button.reset:hover {
+            background-color: #5a6268;
+            box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+        }
+        .box img{
+            /* position: fixed; */
+            margin-right: 20px;
+        }
+
+    </style>
+</head>
+{% include "nav.html" %}
+<body>
+    <div class="box">
+    <a href="{% url "home" %}" class="back-button">Back to Home</a>
+    <img src="{% static 'images/up.webp' %}" alt="">
+
+</div> <!-- Popup Overlay -->
+    
+    <div class="container">
+        <h1>Upload Attendance</h1>
+        <form id="attendanceForm" method="post" onsubmit="showPopup(event)">
+            {% csrf_token %}
+            <label for="year">Year:</label>
+            {{ form.year }}
+
+            <label for="branch">Branch:</label>
+            {{ form.branch }}
+
+            <label for="subject">Subject:</label>
+            {{ form.subject }}
+
+            <label for="hour">Hour:</label>
+            {{ form.hour }}
+
+            <label for="absentees">Absentees (comma-separated roll numbers):</label>
+            {{ form.absentees }}
+
+            <div style="margin-right:0rem;">
+                <button type="submit" class="button upload">Upload</button>  
+            </div>
+        </form>
+    </div>
+  
+
+</body>
+</html>
